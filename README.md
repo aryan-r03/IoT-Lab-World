@@ -276,7 +276,7 @@
 </div>
 
 ```bash
-git clone https://github.com/lshariprasad/IoT-Lab-World.git
+git clone https://github.com/aryan-r03/IoT-Lab-World.git
 cd IoT-Lab-World
 ```
 
@@ -832,7 +832,7 @@ See the [LICENSE](LICENSE) file for details.
 
 ---
 
-**© 2025 lshariprasad | IoT-Lab-World | MIT License**
+**© 2025 Aryan Ranjan | IoT-Lab-World | MIT License**
 
 <br>
 
