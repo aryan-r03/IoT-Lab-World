@@ -1,0 +1,162 @@
+#include <U8g2lib.h>
+#include <WiFi.h>
+#include <WebServer.h>
+#include <LittleFS.h>
+
+U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI u8g2(
+  U8G2_R2, /* cs=*/ 5, /* dc=*/ 4, /* reset=*/ 2
+);
+
+const char* WIFI_NAME = "YOUR_WIFI_NAME";      // 4G-connectivity WiFi
+const char* WIFI_PASS = "YOU_WIFI_PASSWORD";
+
+WebServer server(80);
+
+#define FRAME_SIZE  1024   
+        // 128x64 {screen size} / 8 bytes {packet size}
+
+#define FRAME_DELAY 100    
+        // 100ms = 10fps  {frame delay}
+
+uint8_t  frameBuf[FRAME_SIZE];
+uint32_t totalFrames  = 0;
+uint32_t currentFrame = 0;
+bool     isPlaying    = false;
+unsigned long lastFrameTime = 0;
+File     videoFile;
+
+//  Web-server on phone
+const char uploadPage[] PROGMEM = R"(
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body  { font-family:Arial; text-align:center; padding:30px; background:#111; color:#fff; }
+    h2    { color:#0f0; }
+    .box  { background:#222; padding:20px; border-radius:12px; margin:20px auto; max-width:400px; }
+    input[type=file]   { width:90%; padding:10px; margin:10px 0; }
+    input[type=submit] { width:90%; padding:14px; background:#0a0; color:#fff;
+                         border:none; border-radius:8px; font-size:16px; cursor:pointer; }
+    .info { font-size:12px; color:#aaa; margin-top:10px; }
+  </style>
+</head>
+<body>
+  <h2>🎬 OLED Video Player</h2>
+  <div class="box">
+    <p>Upload your converted <b>video.bin</b> file</p>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+      <input type="file" name="video" accept=".bin"><br>
+      <input type="submit" value="⬆ Upload & Play">
+    </form>
+    <p class="info">Max size depends on ESP32 flash (~1.5MB = ~1500 frames)</p>
+  </div>
+</body>
+</html>
+)";
+
+// Handling uploaded video , on the web-server 
+void handleRoot() {
+  server.send(200, "text/html", uploadPage);
+}
+
+void handleUpload() {
+  HTTPUpload& upload = server.upload();
+
+  if (upload.status == UPLOAD_FILE_START) {
+    isPlaying = false;
+    if (videoFile) videoFile.close();
+    LittleFS.remove("/video.bin");
+    videoFile = LittleFS.open("/video.bin", "w");
+
+    // uploading message on OLED
+    u8g2.clearBuffer();
+    u8g2.setFont(u8g2_font_ncenB08_tr);
+    u8g2.drawStr(10, 35, "Uploading...");
+    u8g2.sendBuffer();
+
+  } else if (upload.status == UPLOAD_FILE_WRITE) {
+    if (videoFile) videoFile.write(upload.buf, upload.currentSize);
+
+  } else if (upload.status == UPLOAD_FILE_END) {
+    if (videoFile) {
+      videoFile.close();
+      totalFrames  = upload.totalSize / FRAME_SIZE;
+      currentFrame = 0;
+
+      // Re-open - playback
+      videoFile = LittleFS.open("/video.bin", "r");
+      isPlaying  = true;
+    }
+    server.send(200, "text/html",
+      "<html><body style='background:#111;color:#0f0;text-align:center;padding:40px'>"
+      "<h2>✅ Upload Done!</h2><p>Playing on OLED...</p>"
+      "<a href='/' style='color:#fff'>⬅ Back</a></body></html>");
+  }
+}
+
+//  WiFi info on OLED { prefer to avoid this }
+void showWifiInfo() {
+  u8g2.clearBuffer();
+  u8g2.setFont(u8g2_font_ncenB08_tr);
+  u8g2.drawStr(0, 12, "Connect to WiFi:");
+  u8g2.drawStr(0, 26, WIFI_NAME);
+  u8g2.drawStr(0, 40, "Then open browser:");
+  u8g2.drawStr(0, 56, "192.168.4.1");
+  u8g2.sendBuffer();
+}
+
+void setup() {
+  u8g2.begin();
+  u8g2.setFlipMode(1);
+
+  //  filesystem
+  if (!LittleFS.begin(true)) {
+    u8g2.clearBuffer();
+    u8g2.drawStr(0, 32, "FS Error!");
+    u8g2.sendBuffer();
+    return;
+  }
+
+  //  WiFi hotspot
+  WiFi.softAP(WIFI_NAME, WIFI_PASS);
+
+  //  web - server routes
+  server.on("/", handleRoot);
+  server.on("/upload", HTTP_POST,
+    []() { /* response handled inside handleUpload */ },
+    handleUpload
+  );
+  server.begin();
+
+  // If a video already exists from last time, play it
+  if (LittleFS.exists("/video.bin")) {
+    videoFile   = LittleFS.open("/video.bin", "r");
+    totalFrames = LittleFS.open("/video.bin", "r").size() / FRAME_SIZE;
+    isPlaying   = true;
+  } else {
+    showWifiInfo();
+  }
+}
+
+void loop() {
+  server.handleClient();       // Handle phone connections
+
+  if (isPlaying && totalFrames > 0 && videoFile) {
+    if (millis() - lastFrameTime >= FRAME_DELAY) {
+      lastFrameTime = millis();
+
+      videoFile.read(frameBuf, FRAME_SIZE);
+
+      u8g2.clearBuffer();
+      u8g2.drawXBMP(0, 0, 128, 64, frameBuf);
+      u8g2.sendBuffer();
+
+      currentFrame++;
+      if (currentFrame >= totalFrames) {
+        currentFrame = 0;
+        videoFile.seek(0);      // Loop back to start
+      }
+    }
+  }
+}
