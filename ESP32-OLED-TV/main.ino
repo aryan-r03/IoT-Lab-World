@@ -107,13 +107,13 @@ void handleUploadResponse() {
 //  WiFi info on OLED { prefer to avoid this }
 void showWifiInfo() {
   u8g2.clearBuffer();
-  u8g2.setFont(u8g2_font_ncenB08_tr);
-  u8g2.drawStr(0, 10, "    OLED-MONO-TV   ");
-  u8g2.drawStr(0, 14, "--------------------");
-  u8g2.drawStr(0, 16, "Connect to WiFi:");
-  u8g2.drawStr(0, 24, WIFI_NAME);
-  u8g2.drawStr(0, 40, "Then open browser:");
-  u8g2.drawStr(0, 56, "192.168.4.1");
+  u8g2.setFont(u8g2_font_ncenB06_tr);
+  u8g2.drawStr(0, 8, "    OLED-MONO-TV   ");
+  u8g2.drawStr(0, 16, "--------------------");
+  u8g2.drawStr(0, 26, "Connect to WiFi:");
+  u8g2.drawStr(0, 34, WIFI_NAME);
+  u8g2.drawStr(0, 42, "Then open browser:");
+  u8g2.drawStr(0, 50, "192.168.4.1");
   u8g2.sendBuffer();
 }
 
