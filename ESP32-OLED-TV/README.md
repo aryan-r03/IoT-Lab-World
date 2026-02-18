@@ -641,11 +641,13 @@ ESP32-OLED-VideoPlayer/
 │   ├── WebServer upload handler
 │   └── Frame-by-frame OLED playback loop
 │
-├── 🐍 image-convertor.py       # PC-side video converter
+├── 🐍 image-convertor.py   (binary image)     # PC-side video converter
 │   ├── OpenCV video decode
 │   ├── Resize → 128×64
 │   ├── Grayscale + threshold
 │   └── LSB-first bit packing → video.bin
+
+(Floyd - Steinberg)
 │
 ├── 📦 video.bin                # Generated binary (after conversion)
 │   └── Flat binary, 1024 bytes/frame, no header
