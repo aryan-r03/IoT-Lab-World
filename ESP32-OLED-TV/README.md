@@ -774,7 +774,7 @@ At 5 fps:             ~293 seconds  (~4.9 minutes)
   <tr>
     <td><b>🎞️ Dithering</b></td>
     <td>Floyd-Steinberg dithering in converter for smoother grayscale appearance</td>
-    <td>🔄 Planned</td>
+    <td>✅ Done</td>
   </tr>
   <tr>
     <td><b>▶️ Playback Controls</b></td>
