@@ -647,7 +647,7 @@ ESP32-OLED-VideoPlayer/
 │   ├── Grayscale + threshold
 │   └── LSB-first bit packing → video.bin
 │ 
-├── 🐍 image-convertor.py  (Floyd - Steinberg)   # PC-side video converter      
+├── 🐍 image-convertor.py  (Floyd - Steinberg)   # PC-side video converter   -----------  ## Much more defined video is obtained
 │   ├── OpenCV video decode
 │   ├── Resize → 128×64
 │   ├── Grayscale + threshold
