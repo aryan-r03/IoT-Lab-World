@@ -802,8 +802,8 @@ At 5 fps:             ~293 seconds  (~4.9 minutes)
     <td>📋 Idea</td>
   </tr>
   <tr>
-    <td><b>🌐 SSD1306 Support</b></td>
-    <td>Alternative driver path for the more common SSD1306 OLED</td>
+    <td><b>🌐 ST7735 Support</b></td>
+    <td>Alternative driver path for ST7735 TFT OLED</td>
     <td>📋 Idea</td>
   </tr>
 </table>
