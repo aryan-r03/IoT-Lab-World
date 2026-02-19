@@ -7,8 +7,8 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI u8g2(
   U8G2_R2, /* cs=*/ 5, /* dc=*/ 4, /* reset=*/ 2
 );
 
-const char* WIFI_NAME = "YOUR_WIFI_NAME";      // 4G-connectivity WiFi
-const char* WIFI_PASS = "YOU_WIFI_PASSWORD";   // ESP is hosting the Hot-Spot, with these credentials 
+const char* WIFI_NAME = "ESP32-OLED";      // 4G-connectivity WiFi - Choose the WiFI name and pasword accordingly
+const char* WIFI_PASS = "12345678";        // ESP is hosting the Hot-Spot, with these credentials 
 
 WebServer server(80);
 
