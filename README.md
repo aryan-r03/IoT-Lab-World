@@ -655,6 +655,18 @@ IoT-Lab-World/
 │   ├── server-main.ino
 │   └── README.md
 │
+└── 📄 README.md                   # This file
+```
+
+> **Each project folder contains:**
+> - `.ino` source file with fully commented code
+> - `README.md` with component list and wiring instructions
+
+
+
+
+</div>
+<!-- │
 ├── 📁 05_ESP32_Web_Distance/
 │   ├── esp32_web_distance.ino     # ESP32 source
 │   └── README.md
@@ -682,14 +694,8 @@ IoT-Lab-World/
 ├── 📁 11_Ultrasonic_Distance/
 │   ├── ultrasonic_distance.ino    # Arduino source
 │   └── README.md                  # Project details
-│ 
-└── 📄 README.md                   # This file
-```
-
-> **Each project folder contains:**
-> - `.ino` source file with fully commented code
-> - `README.md` with component list and wiring instructions
-
+│ -->
+</div>
 ---
 
 ## 📌 Future Improvements
