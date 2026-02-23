@@ -84,6 +84,35 @@
 
 **IoT LAB** is a curated collection of hands-on embedded systems projects built with **Arduino Uno** and **ESP32**. Each project is designed to reinforce core concepts in electronics, firmware development, and IoT integration through real-world problem-solving.
 
+<div align="center">
+
+### 🎯 Current Project Showcase
+
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Highlights</th>
+  </tr>
+  <tr>
+    <td><b>💡 Smart LED Control</b></td>
+    <td>Browser-controlled LEDs via ESP32 WiFi hotspot — no internet required</td>
+  </tr>
+  <tr>
+    <td><b>📡 RFID Attendance</b></td>
+    <td>Complete attendance system with Excel logging via Flask server</td>
+  </tr>
+  <tr>
+    <td><b>🎬 OLED Video Player</b></td>
+    <td>Play videos on 128×64 display — wireless upload, LittleFS storage</td>
+  </tr>
+  <tr>
+    <td><b>🌿 Plant Watering</b></td>
+    <td>Auto-watering with web dashboard, REST API, threshold-based control</td>
+  </tr>
+</table>
+
+</div>
+
 ### 🎯 Learning Objectives
 
 <table>
@@ -130,62 +159,90 @@
     <th>Board</th>
     <th>Components</th>
     <th>Concepts</th>
+    <th>Status</th>
   </tr>
   <tr>
     <td>01</td>
+    <td><b>💡 Smart LED Control</b></td>
+    <td>ESP32</td>
+    <td>LEDs, WiFi, Web Server</td>
+    <td>GPIO control, HTTP API, browser UI</td>
+    <td><span style="color:green">✅ Complete</span></td>
+  </tr>
+  <tr>
+    <td>02</td>
+    <td><b>📡 RFID Attendance System</b></td>
+    <td>ESP32</td>
+    <td>RC522, LCD, Buzzer, WiFi</td>
+    <td>RFID UID read, Flask server, Excel logging</td>
+    <td><span style="color:green">✅ Complete</span></td>
+  </tr>
+  <tr>
+    <td>03</td>
+    <td><b>🎬 OLED Video Player</b></td>
+    <td>ESP32</td>
+    <td>SH1106 128×64, WiFi, LittleFS</td>
+    <td>Binary video format, SPI, file upload</td>
+    <td><span style="color:green">✅ Complete</span></td>
+  </tr>
+  <tr>
+    <td>04</td>
+    <td><b>🌿 Plant Watering System</b></td>
+    <td>ESP32</td>
+    <td>DS18B20, Soil sensor, Relay, LCD</td>
+    <td>Auto-watering, web dashboard, REST API</td>
+    <td><span style="color:green">✅ Complete</span></td>
+  </tr>
+  <tr>
+    <td colspan="6" style="text-align:center;background:#f6f8fa;padding:12px;"><i>🚧 Additional Projects Coming Soon</i></td>
+  </tr>
+  <tr>
+    <td>05</td>
     <td><b>🔊 Ultrasonic Distance Measurement</b></td>
     <td>Arduino Uno</td>
     <td>HC-SR04, LED/Buzzer</td>
     <td>Pulse timing, distance calc</td>
+    <td><span style="color:gray">📋 Planned</span></td>
   </tr>
   <tr>
-    <td>02</td>
-    <td><b>🌐 ESP32 Distance Web Monitor</b></td>
-    <td>ESP32</td>
-    <td>HC-SR04, WiFi</td>
-    <td>Web server, HTML UI, live update</td>
-  </tr>
-  <tr>
-    <td>03</td>
+    <td>06</td>
     <td><b>🌡️ Temperature & Humidity Monitor</b></td>
     <td>Arduino / ESP32</td>
     <td>DHT11 / DHT22</td>
     <td>Sensor reading, data logging</td>
+    <td><span style="color:gray">📋 Planned</span></td>
   </tr>
   <tr>
-    <td>04</td>
+    <td>07</td>
     <td><b>🚗 Line Following Robot</b></td>
     <td>Arduino Uno</td>
     <td>IR sensors, DC motors, L298N</td>
     <td>Motor control, sensor fusion</td>
+    <td><span style="color:gray">📋 Planned</span></td>
   </tr>
   <tr>
-    <td>05</td>
-    <td><b>💡 Smart LED Control</b></td>
-    <td>Arduino / ESP32</td>
-    <td>LEDs, LDR, relay</td>
-    <td>PWM, analog read, automation</td>
-  </tr>
-  <tr>
-    <td>06</td>
+    <td>08</td>
     <td><b>🔐 Smart Door Lock</b></td>
     <td>Arduino Uno</td>
     <td>Servo, keypad, LCD</td>
     <td>Servo control, input handling</td>
+    <td><span style="color:gray">📋 Planned</span></td>
   </tr>
   <tr>
-    <td>07</td>
+    <td>09</td>
     <td><b>❤️ Heart Rate Monitor</b></td>
     <td>Arduino Uno</td>
     <td>Pulse sensor, OLED</td>
     <td>Analog signal, BPM calculation</td>
+    <td><span style="color:gray">📋 Planned</span></td>
   </tr>
   <tr>
-    <td>08</td>
+    <td>10</td>
     <td><b>☁️ IoT Weather Station</b></td>
     <td>ESP32</td>
     <td>BME280, WiFi</td>
     <td>I2C, cloud data, web dashboard</td>
+    <td><span style="color:gray">📋 Planned</span></td>
   </tr>
 </table>
 
@@ -808,7 +865,7 @@ IoT-Lab-World/
   <a href="https://www.linkedin.com/in/aryan-ranjan03">
     <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" alt="LinkedIn"/>
   </a>
-  <a href="mailto:aryanr.ranjan@gmail.com">
+  <a href="/cdn-cgi/l/email-protection#94f5e6edf5fae6bae6f5fafef5fad4f3f9f5fdf8baf7fbf9">
     <img src="https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail" alt="Email"/>
   </a>
   <a href="https://github.com/aryan-r03">
@@ -856,9 +913,4 @@ See the [LICENSE](LICENSE) file for details.
 
 <br>
 
-⭐ If this repository helped you learn something new, please **star it** and share it with fellow makers!
-
-<br>
-
-
-</div>
+⭐ If this repository helped you learn something new, please **star it** an
