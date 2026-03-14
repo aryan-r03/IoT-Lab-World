@@ -254,7 +254,7 @@ void handleRoot() {
 }
 
 void handleData() {
-  String ip = WiFi.localIP().toString();
+  String ip = WiFi.softAPIP().toString();
   String json = "{";
   json += "\"temp\":"    + String(g_tempC, 2)   + ",";
   json += "\"moisture\":" + String(g_moisture)  + ",";
@@ -343,26 +343,14 @@ void setup() {
   // Connect WiFi
   lcd.clear();
   lcd.setCursor(0, 0); lcd.print("Connecting WiFi");
-  WiFi.begin(ssid, pass);
-  int retries = 0;
-  while (WiFi.status() != WL_CONNECTED && retries < 40) {
-    delay(500);
-    retries++;
-  }
+  WiFi.softAP(ssid, pass);
+  IPAddress ip = WiFi.softAPIP();
+  Serial.println("AP IP: " + ip.toString());
 
-  if (WiFi.status() == WL_CONNECTED) {
-    String ip = WiFi.localIP().toString();
-    Serial.println("IP: " + ip);
-
-    lcd.clear();
-    lcd.setCursor(0, 0); lcd.print("WiFi OK!");
-    lcd.setCursor(0, 1); lcd.print(ip);
-    delay(3000);
-  } else {
-    lcd.clear();
-    lcd.setCursor(0, 0); lcd.print("WiFi FAILED");
-    delay(2000);
-  }
+  lcd.clear();
+  lcd.setCursor(0, 0); lcd.print("WiFi Ready!");
+  lcd.setCursor(0, 1); lcd.print(ip.toString());
+  delay(3000);
 
   // Register routes
   server.on("/",         handleRoot);
