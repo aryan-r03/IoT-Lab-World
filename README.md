@@ -194,15 +194,15 @@
     <td><span style="color:green">✅ Complete</span></td>
   </tr>
   <tr>
-    <td colspan="6" style="text-align:center;background:#f6f8fa;padding:12px;"><i>🚧 Additional Projects Coming Soon</i></td>
-  </tr>
-  <tr>
     <td>05</td>
     <td><b>🔊 Ultrasonic Distance Measurement</b></td>
     <td>Arduino Uno</td>
     <td>HC-SR04, LED/Buzzer</td>
     <td>Pulse timing, distance calc</td>
-    <td><span style="color:gray">📋 Planned</span></td>
+    <td><span style="color:gray">✅ Complete</span></td>
+  </tr>
+  <tr>
+    <td colspan="6" style="text-align:center;background:#f6f8fa;padding:12px;"><i>🚧 Additional Projects Coming Soon</i></td>
   </tr>
   <tr>
     <td>06</td>
@@ -712,6 +712,14 @@ IoT-Lab-World/
 │   ├── server-main.ino
 │   └── README.md
 │
+├── 📁 05_Ultrasonic-Distance-Measurement-System/
+│   ├── Distance_GUI.py
+│   ├── Distance_custom_audio.py
+│   ├── arduino_sketch_compatible
+│   ├── arduino_sketch.ino
+│   ├── circuit_diagram.png
+│   └── README.md
+│ 
 └── 📄 README.md                   # This file
 ```
 
