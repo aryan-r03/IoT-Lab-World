@@ -202,6 +202,14 @@
     <td><span style="color:gray">✅ Complete</span></td>
   </tr>
   <tr>
+    <td>05.1</td>
+    <td><b>🔊 ESP-32 Distance Measurement</b></td>
+    <td>ESP-32</td>
+    <td>HC-SR04, LED/Buzzer</td>
+    <td>Pulse timing, distance calc</td>
+    <td><span style="color:gray">✅ Complete</span></td>
+  </tr>
+  <tr>
     <td colspan="6" style="text-align:center;background:#f6f8fa;padding:12px;"><i>🚧 Additional Projects Coming Soon</i></td>
   </tr>
   <tr>
@@ -718,6 +726,10 @@ IoT-Lab-World/
 │   ├── arduino_sketch_compatible
 │   ├── arduino_sketch.ino
 │   ├── circuit_diagram.png
+│   └── README.md
+│
+├── 📁 05.1_ESP-32_Distance-Measurement-System/
+│   ├── esp-webserver.ino
 │   └── README.md
 │ 
 └── 📄 README.md                   # This file
