@@ -233,7 +233,7 @@ ESP32 Distance Monitor is a **comprehensive IoT project** that uses an ultrasoni
 
 ```
 ┌────────────────────────────────────────────────────┐
-│              ESP32 Distance Monitor                │ 
+ │              ESP32 Distance Monitor                │ 
 │             Real-Time Web Interface                │
 │                                                    │
 │    ┌──────────────────────────────────────────┐    │
